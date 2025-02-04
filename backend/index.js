@@ -19,6 +19,9 @@ app.listen(port, async() => {
   }
 });
 
+app.use('/auth',userRouter)
+app.use('/product',productRouter)
+
 app.get('/', (req, res) => {    
     res.send('Hello World!');
 });
