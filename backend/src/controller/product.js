@@ -31,7 +31,8 @@ productRouter.post('/',productUpload.array('files'),async (req, res) => {
             images:images
         });
         res.status(201).json({message: 'Product created successfully', product: newProduct
-    }
+    });
+}
     catch(error){
         console.error(error);
     }
