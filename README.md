@@ -54,3 +54,23 @@ In the **`index.js`** file, we imported Express, initialized the app, and set up
 ### **Milestone 4: Backend Structure and Initial Setup**
 creating user model, user controller and Multer support
 
+
+Milestone 6
+: Backend Structure and Initial Setup** Password Encryption and User Data Storage
+
+Password Hashing:
+
+Implement bcrypt to hash the user's password during the signup process. Ensure that the hashed password is stored in the database instead of the plaintext version to enhance security. User Data Storage:
+
+Save all relevant user information (e.g., name, email, etc.) in the database. Maintain the integrity and confidentiality of the password by ensuring it remains encrypted throughout the process.
+
+Milestone 7
+Create Login Endpoint:
+
+Accept user credentials (email/username and password). Retrieve the corresponding user from the database. Validate Password:
+
+Use bcrypt to hash the entered password. Compare it with the stored hashed password for authentication.
+
+Milestone 8
+In this milestone we created two components called Home.jsx and productcard.jsx. product card.jsx is the template used in home.jsx to map out all the products and display them. We also added routes to the home.jsx to display it when the page loads. Based on the number of products the products are mapped and displayed.
+
