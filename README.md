@@ -74,3 +74,78 @@ Use bcrypt to hash the entered password. Compare it with the stored hashed passw
 Milestone 8
 In this milestone we created two components called Home.jsx and productcard.jsx. product card.jsx is the template used in home.jsx to map out all the products and display them. We also added routes to the home.jsx to display it when the page loads. Based on the number of products the products are mapped and displayed.
 
+
+
+## Milestone 9: Create Product Form
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+
+- Learn how to create a form that collects all the details of a product.
+- Understand how to take multiple images as input and handle them properly.
+
+### Why Create a Product Form?
+
+In this milestone, we will create a form that allows users to input all necessary product details. These details will be stored in a database and displayed on the product homepage created in the previous milestone.
+
+### Steps for Milestone 9 📝
+
+1. **Create the Product Form**: 
+   - Design and implement a form that collects all product-related information.
+   - Ensure the form is user-friendly and validates the input fields.
+
+2. **Handle Multiple Product Images**:
+   - Enable the form to accept multiple images as input.
+   - Implement proper handling and storage of these images.
+
+This milestone is a crucial step in building a functional product listing feature. Good luck! 🚀
+
+---
+
+## Milestone 10: Product Schema & API Endpoint
+
+### Learning Goals 🎯
+By the end of this milestone, you will:
+
+- Learn how to write a product schema.
+- Learn how to create an endpoint to validate and store product details in MongoDB.
+
+### Product Schema
+
+- Define the structure of product data (e.g., name, description, price, image URL) using Mongoose.
+- Ensure each field has proper validation (e.g., required fields, correct data types).
+
+### Endpoint Creation
+
+- Build a **POST** endpoint to receive product data.
+- Validate and save the product details to MongoDB.
+
+### Why Validation?
+
+Validation ensures that only valid data is saved in the database, maintaining data integrity and preventing errors.
+
+This milestone is essential for backend development and securing data consistency in your project. Keep going! 🚀
+
+# Milestone 11: Fetch & Display Product Data
+
+## Learning Goals 🎯
+By the end of this milestone, you will:
+
+- Learn how to write an endpoint that extracts and sends data from MongoDB.
+- Understand how to receive data on the frontend.
+- Dynamically display data using the product card created earlier.
+
+## Steps for Milestone 11 📝
+
+1. **Write an API Endpoint**:
+   - Create an endpoint that retrieves all product data from MongoDB and sends it to the frontend.
+
+2. **Fetch Data in Frontend**:
+   - Write a function in the frontend to fetch all product data from the backend.
+
+3. **Display Data Dynamically**:
+   - Pass the fetched data to the product card component to display it dynamically.
+
+This milestone is crucial in connecting the backend and frontend, making your application fully functional. Keep going! 🚀
+
+
