@@ -1,6 +1,5 @@
-import React, { use } from 'react'
-import { Productcard } from '../Component/ProductCard'
-import { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Productcard } from '../Components/Productcard'
 
 // const productdetails=[
 //     {
@@ -24,11 +23,10 @@ import { useState, useEffect } from 'react'
 //   ]
 export const Home = () => {
 
-  const [product, setproduct] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
+   
   useEffect(() => {
     fetch("http://localhost:3000/product/get-products")
       .then((res) => {
@@ -47,10 +45,12 @@ export const Home = () => {
         setLoading(false);
       });
   }, []);
+
+
   return (
     <div className='w-full min-h-screen bg-neutral-800'>
     <div className="grid grid-cols-5 gap-4 p-4">{
-        productdetails.map((product,index)=>{
+        products.map((product,index)=>{
             return(
                 <>
                 <Productcard key={index} {...product}/></>
@@ -58,4 +58,3 @@ export const Home = () => {
     })}</div></div>
   )
 }
-export default Home;
