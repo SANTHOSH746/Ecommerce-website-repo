@@ -111,6 +111,34 @@ productrouter.post("/post-product",productupload.array('files'),async(req, res) 
 
 });
 
+productrouter.get('/getcart',async(req,res)=>{
+    try{
+        const {email}=req.body
+        
+        if(!email){
+            return res.status(400).json({message:"User not found"})
+        }
+        const user=await userModel.findOne({email:email}).populate({
+            path:cart.productid,
+            model:productModel,
+        })
+
+        if (!user){
+            return res.status(400).json({message:"User not found"})
+        }
+
+        return res.status(400).json(message:"cart is shown successfully")
+
+
+
+        
+    }
+    catch(err){
+        console.log('error in getting cart')
+
+    }
+})
+
 productrouter.put('/edit-product/:id',productupload.array('files',10),async(req,res)=>{
 
     try{
