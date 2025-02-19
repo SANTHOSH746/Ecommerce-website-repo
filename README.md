@@ -238,7 +238,7 @@ This document outlines the progress and key learnings achieved during milestones
 **Note:**
 
 * This is a basic template. Please replace the bracketed sections with your specific details and accomplishments.
-* Use Markdown syntax to format the README.md file for better readability
+* Use Markdown syntax to format the README.md file for better readability..
 
 
 
