@@ -2,7 +2,9 @@ const {Router} = require('express');
 const { productupload } = require('../../multer');
 const productModel = require('../Model/Productmodel');
 const productrouter = Router();
-const path=require('path')
+const path=require('path');
+const userModel = require('../model/userModel');
+const { default: mongoose } = require('mongoose');
 
 productrouter.get("/get-product", async (req, res) => {
     try{
@@ -34,6 +36,41 @@ productrouter.get("/get-product", async (req, res) => {
         console.log(err);
     }
 });
+
+productrouter.post('/cart',async(req,res)=>{
+    const {email,productid,productname,quantity}=req.body
+    try{
+        const user=await userModel.findOne({email:email})
+        if(!user){
+            return res.status(400).json({message:"User not found"})
+        }
+        const product=await productModel.findById(productid)
+        if(!product || !email || !productname || !quantity){
+            return res.status(404).json({message:"Fill all inputBox"})
+        }
+        const findmail= await userModel.findOne({email:email})
+        if(!findmail){
+            return res.status(404).json({message:"User doesnot exist"})
+
+        }
+
+        if(!mongoose.Types.ObjectId.isvalid(productid)){
+            return res.status(400).json({message:"Product does not exist"})
+        }
+        const findproduct=await productModel.findById(productid)
+        if(!findproduct){
+            return res.status(400).json({message:"Product does not exist"})
+        }
+        if(!quantity && quantity < 0){
+            return res.status(400).json({message:"Please enter quantity"})
+        }
+        const cartproductid = await userModel.findIndex((i) => {
+            return i.productid === productid;
+        })
+    }catch(err){
+        console.log('error in the cart')
+    }
+})
 
 productrouter.post("/post-product",productupload.array('files'),async(req, res) => {
     const {name, description, category, tags, price, stock, email} = req.body;
