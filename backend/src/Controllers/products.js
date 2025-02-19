@@ -67,6 +67,16 @@ productrouter.post('/cart',async(req,res)=>{
         const cartproductid = await userModel.findIndex((i) => {
             return i.productid === productid;
         })
+        if(cartproductid > -1){
+            userModel.cart[cartproductid].quantity += quantity;
+        }
+        else{
+            userModel.cart.push({
+                productid,
+                productname,
+                quantity,
+            });
+        }
     }catch(err){
         console.log('error in the cart')
     }
