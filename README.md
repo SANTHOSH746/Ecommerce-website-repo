@@ -55,7 +55,8 @@ In the **`index.js`** file, we imported Express, initialized the app, and set up
 creating user model, user controller and Multer support
 
 
-Milestone 6 : Backend Structure and Initial Setup** Password Encryption and User Data Storage
+Milestone 6
+: Backend Structure and Initial Setup** Password Encryption and User Data Storage
 
 Password Hashing:
 
@@ -63,48 +64,336 @@ Implement bcrypt to hash the user's password during the signup process. Ensure t
 
 Save all relevant user information (e.g., name, email, etc.) in the database. Maintain the integrity and confidentiality of the password by ensuring it remains encrypted throughout the process.
 
-Milestone 7 Create Login Endpoint:
+Milestone 7
+Create Login Endpoint:
 
 Accept user credentials (email/username and password). Retrieve the corresponding user from the database. Validate Password:
 
 Use bcrypt to hash the entered password. Compare it with the stored hashed password for authentication.
 
-Milestone 8 In this milestone we created two components called Home.jsx and productcard.jsx. product card.jsx is the template used in home.jsx to map out all the products and display them. We also added routes to the home.jsx to display it when the page loads. Based on the number of products the products are mapped and displayed.
+Milestone 8
+In this milestone we created two components called Home.jsx and productcard.jsx. product card.jsx is the template used in home.jsx to map out all the products and display them. We also added routes to the home.jsx to display it when the page loads. Based on the number of products the products are mapped and displayed.
 
-Milestone 9: Create Product Form
-Learning Goals 🎯
+
+
+## Milestone 9: Create Product Form
+
+### Learning Goals 🎯
 By the end of this milestone, you will:
 
-Learn how to create a form that collects all the details of a product.
-Understand how to take multiple images as input and handle them properly.
-Why Create a Product Form?
+- Learn how to create a form that collects all the details of a product.
+- Understand how to take multiple images as input and handle them properly.
+
+### Why Create a Product Form?
+
 In this milestone, we will create a form that allows users to input all necessary product details. These details will be stored in a database and displayed on the product homepage created in the previous milestone.
 
-Steps for Milestone 9 📝
-Create the Product Form:
+### Steps for Milestone 9 📝
 
-Design and implement a form that collects all product-related information.
-Ensure the form is user-friendly and validates the input fields.
-Handle Multiple Product Images:
+1. **Create the Product Form**: 
+   - Design and implement a form that collects all product-related information.
+   - Ensure the form is user-friendly and validates the input fields.
 
-Enable the form to accept multiple images as input.
-Implement proper handling and storage of these images.
+2. **Handle Multiple Product Images**:
+   - Enable the form to accept multiple images as input.
+   - Implement proper handling and storage of these images.
+
 This milestone is a crucial step in building a functional product listing feature. Good luck! 🚀
 
-Milestone 10: Product Schema & API Endpoint
-Learning Goals 🎯
+---
+
+## Milestone 10: Product Schema & API Endpoint
+
+### Learning Goals 🎯
 By the end of this milestone, you will:
 
-Learn how to write a product schema.
-Learn how to create an endpoint to validate and store product details in MongoDB.
-Product Schema
-Define the structure of product data (e.g., name, description, price, image URL) using Mongoose.
-Ensure each field has proper validation (e.g., required fields, correct data types).
-Endpoint Creation
-Build a POST endpoint to receive product data.
-Validate and save the product details to MongoDB.
-Why Validation?
+- Learn how to write a product schema.
+- Learn how to create an endpoint to validate and store product details in MongoDB.
+
+### Product Schema
+
+- Define the structure of product data (e.g., name, description, price, image URL) using Mongoose.
+- Ensure each field has proper validation (e.g., required fields, correct data types).
+
+### Endpoint Creation
+
+- Build a **POST** endpoint to receive product data.
+- Validate and save the product details to MongoDB.
+
+### Why Validation?
+
 Validation ensures that only valid data is saved in the database, maintaining data integrity and preventing errors.
 
 This milestone is essential for backend development and securing data consistency in your project. Keep going! 🚀
+
+# Milestone 11: Fetch & Display Product Data
+
+## Learning Goals 🎯
+By the end of this milestone, you will:
+
+- Learn how to write an endpoint that extracts and sends data from MongoDB.
+- Understand how to receive data on the frontend.
+- Dynamically display data using the product card created earlier.
+
+## Steps for Milestone 11 📝
+
+1. **Write an API Endpoint**:
+   - Create an endpoint that retrieves all product data from MongoDB and sends it to the frontend.
+
+2. **Fetch Data in Frontend**:
+   - Write a function in the frontend to fetch all product data from the backend.
+
+3. **Display Data Dynamically**:
+   - Pass the fetched data to the product card component to display it dynamically.
+
+This milestone is crucial in connecting the backend and frontend, making your application fully functional. Keep going! 🚀
+
+E-commerce Project - Milestones 12-16
+This document outlines the progress and key learnings achieved during milestones 12-16 of the E-commerce project.
+
+Milestone 12: Data Fetching and Display
+Learning Goals:
+
+Implement an endpoint to filter and retrieve product data from MongoDB based on user email.
+Develop frontend logic to receive and dynamically display fetched product data using the previously created product card component.
+Key Achievements:
+
+Successfully implemented an endpoint in the backend to filter products based on user email.
+Integrated the endpoint with the frontend, enabling the dynamic display of filtered products.
+Enhanced the product card component for better user experience.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., data formatting issues, performance bottlenecks]
+[Explain how these challenges were addressed]
+Milestone 13: Data Updating
+Learning Goals:
+
+Implement an endpoint to update existing product data in MongoDB.
+Develop frontend functionality to auto-fill forms with existing data and provide options for editing.
+Key Achievements:
+
+Created an endpoint to handle product updates in the backend.
+Implemented frontend logic to pre-populate forms with existing product data.
+Enabled users to edit product information and submit updates.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling data validation, preventing overwriting]
+[Explain how these challenges were addressed]
+Milestone 14: Data Deletion
+Learning Goals:
+
+Implement an endpoint to delete a specific product from MongoDB based on its ID.
+Integrate frontend logic to trigger product deletion requests.
+Key Achievements:
+
+Created an endpoint to delete products from the database.
+Implemented frontend functionality to initiate product deletion requests.
+Added appropriate safeguards and confirmations before deleting products.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling accidental deletions, maintaining data integrity]
+[Explain how these challenges were addressed]
+Milestone 15: Navigation Component
+Learning Goals:
+
+Create a reusable navigation component for consistent user experience across multiple pages.
+Key Achievements:
+
+Developed a reusable navigation component.
+Successfully integrated the navigation component into multiple pages within the application.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling responsive design, ensuring cross-browser compatibility]
+[Explain how these challenges were addressed]
+Milestone 16: Product Detail Page
+Learning Goals:
+
+Create a dedicated page to display individual product details.
+Implement functionality to add products to the cart with quantity selection.
+Key Achievements:
+
+Developed a product detail page with comprehensive information.
+Implemented features for selecting product quantity and adding items to the cart.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling inventory updates, ensuring smooth cart interactions]
+[Explain how these challenges were addressed]
+Overall:
+
+[Summarize the overall progress and key learnings across all milestones. Mention any significant achievements or unexpected outcomes.]
+Future Plans:
+
+[Outline the next steps for the E-commerce project, such as:
+Implementing cart functionality
+Integrating payment gateways
+Enhancing user authentication and authorization]
+Note:
+
+This is a basic template. Please replace the bracketed sections with your specific details and accomplishments.
+Use Markdown syntax to format the README.md file for better readability..
+
+
+# Milestone 17 - Cart Management API
+
+## Project Overview
+This milestone involves modifying the user schema to store cart products and implementing an endpoint to receive product details and store them in the database.
+
+## Tasks
+1. **Edit the User Schema**
+   - Modify the existing user schema to include a `cart` field.
+   - Ensure the `cart` field stores product details such as `productId`, `quantity`, and `price`.
+
+2. **Create an API Endpoint**
+   - Develop an endpoint to receive product details from the frontend.
+   - Validate the received data before storing it in the database.
+   - Update the user's cart with the received product details.
+
+## Installation & Setup
+### Prerequisites
+- Node.js (v16 or later)
+- MongoDB (local or cloud-based)
+- npm or yarn package manager
+
+### Steps to Run
+1. Clone the repository:
+   ```sh
+   git clone <repository-url>
+   cd <project-folder>
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Set up environment variables in a `.env` file:
+   ```env
+   MONGO_URI=<your-mongodb-connection-string>
+   PORT=5000
+   ```
+4. Start the server:
+   ```sh
+   npm start
+   ```
+
+## API Documentation
+### **1. Add Product to Cart**
+**Endpoint:** `POST /api/cart/add`
+
+**Request Body:**
+```json
+{
+  "userId": "12345",
+  "productId": "67890",
+  "name": "Product Name",
+  "price": 100,
+  "quantity": 2
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Product added to cart successfully",
+  "cart": [
+    {
+      "productId": "67890",
+      "name": "Product Name",
+      "price": 100,
+      "quantity": 2
+    }
+  ]
+}
+```
+
+## Tech Stack
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB, Mongoose
+
+
+
+
+
+E-commerce Project - Milestones 12-16
+This document outlines the progress and key learnings achieved during milestones 12-16 of the E-commerce project.
+
+Milestone 12: Data Fetching and Display
+Learning Goals:
+
+Implement an endpoint to filter and retrieve product data from MongoDB based on user email.
+Develop frontend logic to receive and dynamically display fetched product data using the previously created product card component.
+Key Achievements:
+
+Successfully implemented an endpoint in the backend to filter products based on user email.
+Integrated the endpoint with the frontend, enabling the dynamic display of filtered products.
+Enhanced the product card component for better user experience.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., data formatting issues, performance bottlenecks]
+[Explain how these challenges were addressed]
+Milestone 13: Data Updating
+Learning Goals:
+
+Implement an endpoint to update existing product data in MongoDB.
+Develop frontend functionality to auto-fill forms with existing data and provide options for editing.
+Key Achievements:
+
+Created an endpoint to handle product updates in the backend.
+Implemented frontend logic to pre-populate forms with existing product data.
+Enabled users to edit product information and submit updates.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling data validation, preventing overwriting]
+[Explain how these challenges were addressed]
+Milestone 14: Data Deletion
+Learning Goals:
+
+Implement an endpoint to delete a specific product from MongoDB based on its ID.
+Integrate frontend logic to trigger product deletion requests.
+Key Achievements:
+
+Created an endpoint to delete products from the database.
+Implemented frontend functionality to initiate product deletion requests.
+Added appropriate safeguards and confirmations before deleting products.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling accidental deletions, maintaining data integrity]
+[Explain how these challenges were addressed]
+Milestone 15: Navigation Component
+Learning Goals:
+
+Create a reusable navigation component for consistent user experience across multiple pages.
+Key Achievements:
+
+Developed a reusable navigation component.
+Successfully integrated the navigation component into multiple pages within the application.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling responsive design, ensuring cross-browser compatibility]
+[Explain how these challenges were addressed]
+Milestone 16: Product Detail Page
+Learning Goals:
+
+Create a dedicated page to display individual product details.
+Implement functionality to add products to the cart with quantity selection.
+Key Achievements:
+
+Developed a product detail page with comprehensive information.
+Implemented features for selecting product quantity and adding items to the cart.
+Challenges:
+
+[Describe any challenges encountered during implementation, e.g., handling inventory updates, ensuring smooth cart interactions]
+[Explain how these challenges were addressed]
+Overall:
+
+[Summarize the overall progress and key learnings across all milestones. Mention any significant achievements or unexpected outcomes.]
+Future Plans:
+
+[Outline the next steps for the E-commerce project, such as:
+Implementing cart functionality
+Integrating payment gateways
+Enhancing user authentication and authorization]
+Note:
+
+This is a basic template. Please replace the bracketed sections with your specific details and accomplishments.
+Use Markdown syntax to format the README.md file for better readability..
+
 
