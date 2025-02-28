@@ -79,9 +79,15 @@ productRouter.put('/edit-cart', async (req, res) => {
 
     const cart = findUser.cart;
 
-    const findcartproduct = cart.map(item => item.productId === productId);
+    const findcartproduct = cart.find(item => item.productId === productId);
+
+    if(findcartproduct){
+        findcartproduct.quantity = quantity;
+
+    }
 
 
+    return res.status(200).json({message: 'Cart updated successfully'});
 
 
 
