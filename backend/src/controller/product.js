@@ -61,4 +61,31 @@ productRouter.post('/post-product',productUpload.array('files'),async (req, res)
 })
 
 
+productRouter.put('/edit-cart', async (req, res) => {
+    const {email, productId, quantity} = req.body;
+
+    if(!email || !productId || quantity === undefined){
+        return res.status(400).json({message: 'Please provide all required fields'});
+    }
+    const findUser = await userModel.findOne({email: email});
+    if(!findUser){
+        return res.status(400).json({message: 'User not found'});
+    }
+    const findProduct = await productModel.findOne({_id: productId});
+
+    if(!findProduct || findProduct.stock < quantity || quantity < 1){
+        return res.status(400).json({message: 'Product not found'});
+    }
+
+    const cart = findUser.cart;
+
+    const findcartproduct = cart.map(item => item.productId === productId);
+
+
+
+
+
+})
+
+
 module.exports = productRouter;

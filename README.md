@@ -397,3 +397,56 @@ This is a basic template. Please replace the bracketed sections with your specif
 Use Markdown syntax to format the README.md file for better readability..
 
 
+# Milestone 19 :- Creating a cart handler
+
+# Cart Page Implementation
+
+## Milestone Overview
+By the end of this milestone, you will:
+- Create a cart page that displays the products inside the cart using an endpoint built in milestone 18.
+- Implement functionality to increase and decrease product quantity using `+` and `-` buttons.
+- Write an endpoint to handle increasing and decreasing product quantity.
+
+---
+
+## Project Structure
+```
+project-root/
+│-- backend/
+│   ├── routes/
+│   │   ├── cart.js  # Defines cart-related API routes
+│   ├── models/
+│   │   ├── cartModel.js  # Defines the cart schema
+│   ├── controllers/
+│   │   ├── cartController.js  # Handles cart operations
+│   ├── server.js  # Main backend entry point
+│
+│-- frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Cart.js  # Cart page UI and logic
+│   │   ├── App.js  # Main frontend entry point
+│
+│-- README.md  # Project Documentation
+```
+
+---
+
+## Backend Implementation
+### API Endpoints
+
+#### Get Cart Products
+**Endpoint:** `GET /api/cart`
+- Fetches all products in the cart.
+- Returns a list of cart items with product details and quantities.
+
+#### Increase Product Quantity
+**Endpoint:** `PUT /api/cart/increase/:productId`
+- Increases the quantity of a specific product in the cart.
+- Updates the database accordingly.
+
+#### Decrease Product Quantity
+**Endpoint:** `PUT /api/cart/decrease/:productId`
+- Decreases the quantity of a specific product in t
+
+
