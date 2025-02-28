@@ -6,7 +6,7 @@ import { Home } from './page/Home'
 import { ProductForm } from './Components/Productform'
 import { Productcardseller } from './Components/productcardforseller'
 import Cart from './page/cart'
-
+import Profile from './Components/profile'
 
 function App() {
  
@@ -17,11 +17,11 @@ function App() {
       <Route path="/Login" element={<Login/>}/>
       <Route path="/Signup" element={<Signup/>}/>
       <Route path="/cart" element={<Cart/>}/>
-   <Route path='/productform' element={<ProductForm/>}/>
-   <Route path='/my-product' element={<Productcardseller/>}/>
+      <Route path='/productform' element={<ProductForm/>}/>
+      <Route path='/my-product' element={<Productcardseller/>}/>
+      <Route path='/profile' element={<Profile/>}/>
     </Routes>
     </>
-    
   )
 }
 
