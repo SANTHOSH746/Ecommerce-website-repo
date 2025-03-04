@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const email = "user@example.com"; 
+  const email = "user@example.com"; // Replace with dynamic email if needed
 
   useEffect(() => {
     axios
@@ -30,7 +32,9 @@ const Profile = () => {
       />
       <h2>{user.name}</h2>
       <p>Email: {user.email}</p>
-      <p>Address: {user.address || "No address provided"}</p>
+      <p>Address: {user.address ? `${user.address.address1}, ${user.address.city}` : "No address provided"}</p>
+
+      <button onClick={() => navigate("/add-address")}>Add Address</button>
     </div>
   );
 };
