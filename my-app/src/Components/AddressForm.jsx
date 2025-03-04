@@ -41,4 +41,13 @@ const AddressForm = () => {
         <input type="text" name="country" placeholder="Country" onChange={handleChange} required />
         <input type="text" name="city" placeholder="City" onChange={handleChange} required />
         <input type="text" name="address1" placeholder="Address Line 1" onChange={handleChange} required />
-        <input type="text" name="address2" placeholder="Address Line 2" o
+        <input type="text" name="address2" placeholder="Address Line 2" onChange={handleChange} />
+        <input type="text" name="zipCode" placeholder="Zip Code" onChange={handleChange} required />
+        <input type="text" name="addressType" placeholder="Address Type (Home/Office)" onChange={handleChange} required />
+        <button type="submit">Save Address</button>
+      </form>
+    </div>
+  );
+};
+
+export default AddressForm;
