@@ -450,3 +450,37 @@ project-root/
 - Decreases the quantity of a specific product in t
 
 
+
+
+
+### Milestone-21
+
+## 🎯 Learning Goals  
+By the end of this milestone, you will be able to:  
+✅ Create a **frontend form** to collect address details  
+✅ Accept the following inputs:  
+   - **Country**  
+   - **City**  
+   - **Address Line 1**  
+   - **Address Line 2**  
+   - **Zip Code**  
+   - **Address Type** (e.g., Home, Office, Other)  
+
+---
+
+## 🛠 Tech Stack  
+- **Frontend:** React.js  
+- **State Management:** useState (React Hook)  
+- **Routing:** React Router  
+- **Form Handling:** Controlled Components  
+- **Backend (Optional, if needed):** Express.js, MongoDB  
+
+---
+
+## 🚀 Project Setup  
+
+### 🔹 1️⃣ Clone the Repository  
+```sh
+git clone https://github.com/your-username/address-form.git
+cd address-form
+
