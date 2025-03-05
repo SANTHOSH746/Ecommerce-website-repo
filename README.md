@@ -450,3 +450,152 @@ project-root/
 - Decreases the quantity of a specific product in t
 
 
+
+
+
+# Milestone-21
+
+## 🎯 Learning Goals  
+By the end of this milestone, you will be able to:  
+✅ Create a **frontend form** to collect address details  
+✅ Accept the following inputs:  
+   - **Country**  
+   - **City**  
+   - **Address Line 1**  
+   - **Address Line 2**  
+   - **Zip Code**  
+   - **Address Type** (e.g., Home, Office, Other)  
+
+---
+
+## 🛠 Tech Stack  
+- **Frontend:** React.js  
+- **State Management:** useState (React Hook)  
+- **Routing:** React Router  
+- **Form Handling:** Controlled Components  
+- **Backend (Optional, if needed):** Express.js, MongoDB  
+
+---
+
+## 🚀 Project Setup  
+
+### 🔹 1️⃣ Clone the Repository  
+```sh
+git clone https://github.com/your-username/address-form.git
+cd address-form
+
+
+
+
+
+
+
+# 📦 Milestone 22: Store Address in User Profile  
+
+## 🚀 Overview  
+In this milestone, we have implemented a **backend endpoint** that allows users to **store their address** inside their profile in the database. This feature ensures that users can manage their addresses efficiently.  
+
+## 🎯 Learning Goals  
+By the end of this milestone, you will:  
+- Create a **backend endpoint** to store user addresses in the database.  
+- Update the **user profile schema** to include address details.  
+- Connect the frontend **AddressForm** with the backend API.  
+- Display the updated address in the **Profile page**.  
+
+## 🏗️ Project Structure  
+```
+/project-root
+│── /src
+│   ├── /Components
+│   │   ├── AddressForm.jsx   # Form to collect address details
+│   │   ├── Profile.jsx       # Displays user profile with stored address
+│   ├── /Model
+│   │   ├── userModel.js      # Defines user schema with address field
+│   ├── /Routes
+│   │   ├── user.js           # Backend routes for user profile and address update
+│   ├── App.jsx               # Includes routing for AddressForm and Profile
+│── server.js                 # Main server file
+│── package.json
+│── README.md
+```
+
+## 🔧 Installation & Setup  
+1. **Clone the repository**  
+   ```bash
+   git clone <repo-url>
+   cd project-root
+   ```
+
+2. **Install dependencies**  
+   ```bash
+   npm install
+   ```
+
+3. **Run the server**  
+   ```bash
+   npm start
+   ```
+
+## 🛠️ API Endpoints  
+### 1️⃣ **Update Address**  
+**Endpoint:**  
+```
+POST /update-address
+```
+**Body:**  
+```json
+{
+  "email": "user@example.com",
+  "address": {
+    "country": "India",
+    "city": "Mumbai",
+    "address1": "123 Street Name",
+    "address2": "Apt 45",
+    "zipCode": "400001",
+    "addressType": "Home"
+  }
+}
+```
+**Response:**  
+```json
+{
+  "message": "Address updated successfully",
+  "user": {
+    "email": "user@example.com",
+    "address": { ... }
+  }
+}
+```
+
+### 2️⃣ **Fetch User Profile**  
+**Endpoint:**  
+```
+GET /profile?email=user@example.com
+```
+**Response:**  
+```json
+{
+  "user": {
+    "name": "John Doe",
+    "email": "user@example.com",
+    "address": { ... }
+  }
+}
+```
+
+## 🎯 Features Implemented  
+✔️ **User can add an address through AddressForm**  
+✔️ **Address is stored in the database inside user profile**  
+✔️ **Profile page displays stored address**  
+✔️ **Backend API updates and retrieves user address**  
+
+## 📌 Notes  
+- Ensure the backend server is running before testing.  
+- Update the `email` dynamically when integrating authentication.  
+- Test API using **Postman** or **Thunder Client** before connecting frontend.  
+
+## 🏁 Conclusion  
+Milestone 22 successfully integrates **address management** inside the user profile, enhancing the user experience with persistent address storage. 🚀  
+
+
+
