@@ -649,3 +649,89 @@ By the end of this milestone, you will:
 
 
 
+
+
+
+
+# 🛒 Milestone 24 - Order Confirmation Page
+
+## 🎯 Learning Goals
+By the end of this milestone, you will:
+- Implement an **Order Confirmation Page** in the frontend.
+- Use **Axios** to fetch and display order details.
+- Ensure a smooth **user experience** post-purchase.
+
+---
+
+## 📌 Features to Implement
+1. **Display Order Summary**
+   - Fetch and display **product details, quantity, and price**.
+   - Show **total cost** of the order.
+
+2. **Address Selection**
+   - Retrieve and display the **selected shipping address**.
+
+3. **Payment Confirmation**
+   - Show **payment status** (Success/Failure).
+   - Display **Order ID**.
+
+4. **User Feedback**
+   - Add a **thank-you message** and navigation buttons.
+
+---
+
+## 🏗️ Folder Structure
+
+---
+
+## 🔗 API Endpoints
+| Method | Endpoint                 | Description                          |
+|--------|--------------------------|--------------------------------------|
+| `GET`  | `/order/confirmation`    | Fetch order details                 |
+| `GET`  | `/auth/get-addresses`    | Retrieve stored user addresses      |
+
+---
+
+## 🔧 Tech Stack
+- **Frontend:** React, Axios, React Router
+- **Backend:** Express.js, MongoDB
+- **Authentication:** JWT
+
+---
+
+## 🚀 Steps to Implement
+1. **Create `OrderConfirmation.jsx`**
+2. **Fetch Order Details using `axios.get('/order/confirmation')`**
+3. **Display Order ID, Products, and Address**
+4. **Style the page for a smooth UX**
+5. **Update `App.jsx` to add a new route**
+
+---
+
+## 📝 Example Code (OrderConfirmation.jsx)
+```jsx
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+const OrderConfirmation = () => {
+  const [order, setOrder] = useState(null);
+
+  useEffect(() => {
+    axios.get("/order/confirmation").then((response) => {
+      setOrder(response.data);
+    });
+  }, []);
+
+  if (!order) return <p>Loading...</p>;
+
+  return (
+    <div>
+      <h2>🎉 Order Confirmed!</h2>
+      <p>Order ID: {order.id}</p>
+      <p>Total Amount: ${order.total}</p>
+      <p>Shipping Address: {order.address}</p>
+    </div>
+  );
+};
+
+export default OrderConfirmation;
