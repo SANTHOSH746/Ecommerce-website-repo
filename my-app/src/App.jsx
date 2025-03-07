@@ -1,4 +1,4 @@
-mport './App.css';
+import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Login from './Components/Login';
 import { Signup } from './Components/Signup';
@@ -7,9 +7,9 @@ import { ProductForm } from './Components/Productform';
 import { Productcardseller } from './Components/productcardforseller';
 import Cart from './page/cart';
 import Profile from './Components/profile';
-import AddressForm from './Components/AddressForm'; // Import Address Form
-import SelectAddress from './Components/SelectAddress'; // Import Select Address
-
+import AddressForm from './Components/AddressForm'; 
+import SelectAddress from './Components/SelectAddress'; 
+import OrderConfirmation from './Components/orderConfirmation';
 function App() {
   return (
     <>
@@ -21,8 +21,9 @@ function App() {
         <Route path="/productform" element={<ProductForm />} />
         <Route path="/my-product" element={<Productcardseller />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/add-address" element={<AddressForm />} /> {/* New Route */}
-        <Route path="/select-address" element={<SelectAddress />} /> {/* Added Select Address Page */}
+        <Route path="/add-address" element={<AddressForm />} />
+        <Route path="/select-address" element={<SelectAddress />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
       </Routes>
     </>
   );
