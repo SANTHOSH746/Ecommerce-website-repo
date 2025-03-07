@@ -599,3 +599,53 @@ Milestone 22 successfully integrates **address management** inside the user prof
 
 
 
+
+
+
+
+
+# Milestone 23: Select Address Page & Order Placement
+
+## Learning Goals 🎯
+By the end of this milestone, you will:
+- Implement a "Place Order" button inside the cart.
+- Create a "Select Address" page that retrieves and displays all saved addresses from the database.
+- Allow users to select a delivery address before placing an order.
+
+## Features Implemented 🚀
+### Backend:
+1. **Updated `user.js` (Routes)**
+   - Added a `GET /fetch-addresses` endpoint to retrieve all addresses for a user.
+   - Integrated address retrieval logic using `userModel`.
+
+2. **Updated `userModel.js` (Schema)**
+   - Ensured addresses are stored as an array inside the user schema.
+
+### Frontend:
+1. **Created `SelectAddress.jsx`**
+   - Fetched user addresses using Axios (`/auth/fetch-addresses`).
+   - Displayed all available addresses.
+   - Allowed users to select a preferred address.
+
+2. **Updated `App.jsx`**
+   - Added a route for `/select-address`.
+   - Integrated `SelectAddress` into the application.
+
+## How to Use 🛠️
+1. Navigate to `/cart` and click the "Place Order" button.
+2. You'll be redirected to the `/select-address` page.
+3. Choose a delivery address from the available options.
+4. Confirm the selection to proceed with the order.
+
+## Technologies Used 🏗️
+- **Frontend:** React, Axios, React Router
+- **Backend:** Express, MongoDB, Mongoose, JWT Authentication
+
+## Next Steps 🔜
+- Implement order placement logic.
+- Connect order details with a payment gateway.
+- Enhance UI/UX for a smoother checkout experience.
+
+
+
+
