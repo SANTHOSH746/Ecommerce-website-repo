@@ -6,7 +6,6 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config({ path: "./src/config/.env" });
 
 const secret = process.env.private_key;
-
 const userrouter = Router();
 
 // Create a new user
@@ -20,8 +19,8 @@ userrouter.post("/create-user", upload.single("file"), async (req, res) => {
 
   bcrypt.hash(password, 10, async function (err, hash) {
     await userModel.create({
-      name: name,
-      email: email,
+      name,
+      email,
       password: hash,
     });
     res.status(201).json({ message: "User created successfully" });
@@ -31,7 +30,7 @@ userrouter.post("/create-user", upload.single("file"), async (req, res) => {
 // Login user
 userrouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const check = await userModel.findOne({ email: email });
+  const check = await userModel.findOne({ email });
 
   if (!check) {
     return res.status(400).json({ message: "User not found" });
@@ -42,11 +41,11 @@ userrouter.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid bcrypt compare" });
     }
     if (result) {
-      jwt.sign({ email: email }, secret, (err, token) => {
+      jwt.sign({ email }, secret, (err, token) => {
         if (err) {
           return res.status(400).json({ message: "Invalid jwt" });
         }
-        res.status(200).json({ token: token });
+        res.status(200).json({ token });
       });
     } else {
       return res.status(400).json({ message: "Invalid password" });
@@ -74,7 +73,7 @@ userrouter.post("/update-address", async (req, res) => {
   try {
     const user = await userModel.findOneAndUpdate(
       { email },
-      { address },
+      { $push: { addresses: address } },
       { new: true }
     );
     if (!user) {
@@ -83,6 +82,20 @@ userrouter.post("/update-address", async (req, res) => {
     res.status(200).json({ message: "Address updated successfully", user });
   } catch (error) {
     res.status(500).json({ message: "Error updating address" });
+  }
+});
+
+// **New Route: Get user addresses**
+userrouter.get("/get-addresses", async (req, res) => {
+  const { email } = req.query;
+  try {
+    const user = await userModel.findOne({ email });
+    if (!user || !user.addresses.length) {
+      return res.status(404).json({ message: "No addresses found" });
+    }
+    res.status(200).json({ addresses: user.addresses });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching addresses" });
   }
 });
 
