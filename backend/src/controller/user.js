@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const userModel = require("../Model/userModel");
 const productModel = require("../Model/productModel");
+const orderModel = require("../model/orderModel");
 const bcrypt = require("bcrypt");
 const { upload } = require("../../multer");
 const jwt = require("jsonwebtoken");
@@ -132,6 +133,28 @@ userrouter.post("/place-order", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error placing order" });
+  }
+});
+
+// **New Route: Get all orders for a user**
+userrouter.get("/your-orders", async (req, res) => {
+  const { email } = req.query;
+
+  try {
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const orders = await orderModel.find({ userId: user._id }).populate("productId");
+    if (!orders.length) {
+      return res.status(404).json({ message: "No orders found for this user" });
+    }
+
+    res.status(200).json({ orders });
+  } catch (error) {
+    console.error("Error fetching orders:", error);
+    res.status(500).json({ message: "Error fetching orders" });
   }
 });
 
