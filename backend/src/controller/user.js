@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const userModel = require("../Model/userModel");
+const productModel = require("../Model/productModel");
 const bcrypt = require("bcrypt");
 const { upload } = require("../../multer");
 const jwt = require("jsonwebtoken");
@@ -96,6 +97,41 @@ userrouter.get("/get-addresses", async (req, res) => {
     res.status(200).json({ addresses: user.addresses });
   } catch (error) {
     res.status(500).json({ message: "Error fetching addresses" });
+  }
+});
+
+// **New Route: Place Order**
+userrouter.post("/place-order", async (req, res) => {
+  const { email, products, address } = req.body;
+  try {
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    
+    const orders = [];
+    for (const product of products) {
+      const productDetails = await productModel.findById(product.productId);
+      if (!productDetails) {
+        return res.status(400).json({ message: `Product with ID ${product.productId} not found` });
+      }
+      
+      const order = {
+        userId: user._id,
+        productId: product.productId,
+        quantity: product.quantity,
+        address: address,
+        status: "Pending",
+        createdAt: new Date()
+      };
+      orders.push(order);
+    }
+    
+    await orderModel.insertMany(orders);
+    res.status(201).json({ message: "Order placed successfully", orders });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error placing order" });
   }
 });
 
