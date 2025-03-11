@@ -735,3 +735,53 @@ const OrderConfirmation = () => {
 };
 
 export default OrderConfirmation;
+
+
+
+
+
+
+
+
+# Milestone 25 - Place an Order
+
+## 📌 Overview
+This milestone focuses on creating a backend endpoint that allows users to place an order.  
+The order consists of **products, quantity, and a shipping address** associated with a registered user.
+
+## 🏗️ Technologies Used
+- Node.js
+- Express.js
+- MongoDB (Mongoose ODM)
+- bcrypt.js (for password hashing)
+- multer (for file uploads)
+- dotenv (for environment variables)
+- JWT (for authentication)
+
+---
+
+## 🚀 API Endpoint: Place an Order
+### **📌 Endpoint: `/place-order`**
+**Method:** `POST`  
+**URL:** `/auth/place-order`  
+
+### **📌 Request Body**
+```json
+{
+  "email": "user@example.com",
+  "products": [
+    { "productId": "65f1a98b7f1c3e5d1a123456", "quantity": 2 },
+    { "productId": "65f1a98b7f1c3e5d1a654321", "quantity": 1 }
+  ],
+  "address": "123, Main Street, City"
+}
+
+
+
+
+
+
+
+
+
+
