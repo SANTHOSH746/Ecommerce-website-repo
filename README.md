@@ -735,3 +735,93 @@ const OrderConfirmation = () => {
 };
 
 export default OrderConfirmation;
+
+
+
+
+
+
+
+# Milestone 25 - Place an Order
+
+## 📌 Overview
+This milestone focuses on creating a backend endpoint that allows users to place an order.  
+The order consists of **products, quantity, and a shipping address** associated with a registered user.
+
+## 🏗️ Technologies Used
+- Node.js
+- Express.js
+- MongoDB (Mongoose ODM)
+- bcrypt.js (for password hashing)
+- multer (for file uploads)
+- dotenv (for environment variables)
+- JWT (for authentication)
+
+---
+
+## 🚀 API Endpoint: Place an Order
+### **📌 Endpoint: `/place-order`**
+**Method:** `POST`  
+**URL:** `/auth/place-order`  
+
+### **📌 Request Body**
+```json
+{
+  "email": "user@example.com",
+  "products": [
+    { "productId": "65f1a98b7f1c3e5d1a123456", "quantity": 2 },
+    { "productId": "65f1a98b7f1c3e5d1a654321", "quantity": 1 }
+  ],
+  "address": "123, Main Street, City"
+}
+
+
+
+
+
+
+---
+
+
+# Milestone 26 - Retrieve User Orders
+
+## 📌 Overview
+This milestone focuses on creating a backend endpoint that allows users to **view all their past orders**.  
+Using the user's **email**, the system retrieves their **_id** and fetches all orders associated with them.
+
+## 🏗️ Technologies Used
+- Node.js
+- Express.js
+- MongoDB (Mongoose ODM)
+- bcrypt.js (for password hashing)
+- dotenv (for environment variables)
+- JWT (for authentication)
+
+---
+
+## 🚀 API Endpoint: Retrieve Orders
+### **📌 Endpoint: `/your-orders`**
+**Method:** `GET`  
+**URL:** `/auth/your-orders?email=user@example.com`  
+
+### **📌 Response**
+✅ **Success (200)**
+```json
+{
+  "orders": [
+    {
+      "_id": "65f3c89a0d12ab34567c8901",
+      "userId": "65f0b91c123abc123abc1234",
+      "productId": {
+        "_id": "65f1a98b7f1c3e5d1a123456",
+        "name": "Laptop",
+        "price": 999
+      },
+      "quantity": 2,
+      "address": "123, Main Street, City",
+      "status": "Pending",
+      "createdAt": "2025-03-11T12:34:56.789Z"
+    }
+  ]
+}
+
