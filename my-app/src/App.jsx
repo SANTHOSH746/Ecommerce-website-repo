@@ -10,6 +10,8 @@ import Profile from './Components/profile';
 import AddressForm from './Components/AddressForm'; 
 import SelectAddress from './Components/SelectAddress'; 
 import OrderConfirmation from './Components/orderConfirmation';
+import MyOrders from './page/MyOrders'; // Importing MyOrders component
+
 function App() {
   return (
     <>
@@ -24,6 +26,7 @@ function App() {
         <Route path="/add-address" element={<AddressForm />} />
         <Route path="/select-address" element={<SelectAddress />} />
         <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/my-orders" element={<MyOrders />} /> {/* Added My Orders Route */}
       </Routes>
     </>
   );
