@@ -825,3 +825,75 @@ Using the user's **email**, the system retrieves their **_id** and fetches all o
   ]
 }
 
+
+
+
+
+
+
+
+
+
+
+# 📌 Milestone 27 - My Orders Page
+
+## 📝 Overview  
+In this milestone, we will create a **"My Orders"** page to display all the orders placed by a user. The orders will be fetched from the backend using the `/your-orders` endpoint.
+
+---
+
+## 🎯 Learning Goals  
+By completing this milestone, you will:  
+- ✅ Create a **frontend page** (`MyOrders.jsx`) to display user orders.  
+- ✅ Make a **GET request** to the `/your-orders` API endpoint.  
+- ✅ Send the **user's email** as a query parameter to fetch their orders.  
+- ✅ Display the **list of orders**, including product details.  
+- ✅ Add the **"My Orders" page to the Navbar** for easy access.  
+
+---
+
+## 📂 Steps to Complete This Milestone  
+
+### 1️⃣ Modify `App.jsx`  
+- Import the `MyOrders` component.  
+- Add a route for `/my-orders`.  
+- Ensure it correctly renders the `MyOrders` page.  
+
+### 2️⃣ Create `MyOrders.jsx` Component  
+- Fetch **orders** from the backend using `/your-orders`.  
+- Display order details such as:  
+  - **Product Name**  
+  - **Quantity**  
+  - **Order Status** (Pending, Shipped, Delivered, Cancelled)  
+  - **Order Date**  
+- Use **Tailwind CSS** for styling.  
+
+### 3️⃣ Modify the Navbar  
+- Add a **"My Orders"** link in the Navbar.  
+- Ensure it redirects to `/my-orders`.  
+
+---
+
+## 🛠️ API Endpoint - `/your-orders`  
+- **Method:** `GET`  
+- **URL:** `/your-orders?email=<user_email>`  
+- **Response Example:**  
+```json
+{
+  "orders": [
+    {
+      "_id": "65abc123def456",
+      "productId": {
+        "_id": "789xyz456",
+        "name": "Smartphone X",
+        "price": 699
+      },
+      "quantity": 2,
+      "status": "Shipped",
+      "address": "123 Street, City",
+      "createdAt": "2025-03-11T12:00:00.000Z"
+    }
+  ]
+}
+
+
