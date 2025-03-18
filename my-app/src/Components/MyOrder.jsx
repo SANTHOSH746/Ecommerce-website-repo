@@ -35,6 +35,32 @@ const MyOrders = () => {
     fetchOrders();
   }, []);
 
+  // Function to cancel order
+  const cancelOrder = async (orderId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/cancel-order`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setOrders((prevOrders) =>
+          prevOrders.map((order) =>
+            order._id === orderId ? { ...order, status: "Cancelled" } : order
+          )
+        );
+      } else {
+        alert(data.message || "Failed to cancel order.");
+      }
+    } catch (error) {
+      alert("Error canceling order. Please try again.");
+    }
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-semibold text-gray-800 mb-4">My Orders</h2>
@@ -55,6 +81,7 @@ const MyOrders = () => {
                 <th className="py-2 px-4">Address</th>
                 <th className="py-2 px-4">Status</th>
                 <th className="py-2 px-4">Order Date</th>
+                <th className="py-2 px-4">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -76,6 +103,16 @@ const MyOrders = () => {
                   </td>
                   <td className="py-2 px-4">
                     {new Date(order.createdAt).toLocaleDateString()}
+                  </td>
+                  <td className="py-2 px-4">
+                    {order.status !== "Cancelled" && (
+                      <button
+                        onClick={() => cancelOrder(order._id)}
+                        className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                      >
+                        Cancel Order
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}
