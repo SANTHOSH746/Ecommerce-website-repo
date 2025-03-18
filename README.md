@@ -897,3 +897,31 @@ By completing this milestone, you will:
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+# Milestone 28 - Cancel Order Feature & Fixes
+
+## **Overview**
+Milestone 28 introduces a **Cancel Order** feature in the backend, along with bug fixes and improvements in the `user.js` file. Users can now cancel their orders, and deleted products will no longer cause issues in the order list.
+
+---
+
+## **Features Implemented**
+### ✅ **Cancel Order API**
+- **Endpoint:** `POST /cancel-order`
+- **Description:** Allows users to cancel an order by providing the `orderId`.
+- **Request Body:**
+  ```json
+  {
+    "orderId": "ORDER_ID_HERE"
+  }
