@@ -925,3 +925,43 @@ Milestone 28 introduces a **Cancel Order** feature in the backend, along with bu
   {
     "orderId": "ORDER_ID_HERE"
   }
+
+
+
+
+
+
+
+# 🛒 Milestone 29 - Integrating PayPal Payment  
+
+## 🎯 Learning Goals  
+By the end of this milestone, you will:  
+- Learn how to use the **PayPal API**.  
+- Learn how to integrate **online payments** into your project.  
+
+## 📝 Steps for Milestone 29  
+
+### 1️⃣ Create a PayPal Developer Account  
+- Go to the [PayPal Developer Dashboard](https://developer.paypal.com/).  
+- Sign up or log in.  
+
+### 2️⃣ Set Up Sandbox Accounts  
+- Navigate to **Sandbox > Accounts** in the dashboard.  
+- Copy the **UserID** of the sandbox account and save it.  
+- In the **Sandbox Accounts** section, find your **Client ID** and save it.  
+
+### 3️⃣ Modify the Order Confirmation Page  
+- In your **order confirmation** page, add **two payment options**:  
+  - **Cash on Delivery (COD)**  
+  - **Online Payment (PayPal)**  
+- Use **radio buttons** to let users select between COD and PayPal.  
+- When a user selects **Online Payment**, the **PayPal buttons** should be displayed.  
+
+### 4️⃣ Prepare for the Next Milestone  
+- In the next milestone, we will write the actual code to handle **PayPal transactions**.  
+
+## ✅ Expected Outcome  
+- Users should be able to select **COD** or **PayPal** on the order confirmation page.  
+- If **PayPal** is selected, the **PayPal payment buttons** should appear.  
+
+🚀 **Get ready for the next step: Implementing PayPal payments!**  
