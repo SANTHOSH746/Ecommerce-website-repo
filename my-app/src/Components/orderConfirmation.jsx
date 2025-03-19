@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const OrderConfirmation = () => {
   const [orderDetails, setOrderDetails] = useState([]);
@@ -32,6 +33,17 @@ const OrderConfirmation = () => {
       ) : (
         <p>Loading order details or no address found...</p>
       )}
+      <PayPalScriptProvider options={{ clientId: "AesbSTn6BlZlmWXw3VcNBuHOenIzlDH4beniwz-lY9p_JnzUTlrhLD_muyXJ6Kt-c0XtzmibOVN4h2OH" }}>
+            <PayPalButtons style={{ layout: "horizontal" }}
+            createOrder={(data, actions) => {
+              return actions.order.create({purchase_units : [{amount:{value : totalPrice.toFixed(2)}}]})
+            }}
+            onApprove={(data, actions) => {
+              return actions.order.capture()
+
+            }} 
+            >Pay with paypal</PayPalButtons>
+      </PayPalScriptProvider> 
     </div>
   );
 };
