@@ -5,12 +5,15 @@ const orderModel = require("../Model/orderModel"); // Fixed case sensitivity
 const bcrypt = require("bcrypt");
 const { upload } = require("../../multer");
 const jwt = require("jsonwebtoken");
+const axios = require("axios"); // For calling PayPal API
 require("dotenv").config({ path: "./src/config/.env" });
 
 const secret = process.env.private_key;
+const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID;
+const PAYPAL_SECRET = process.env.PAYPAL_SECRET;
 const userrouter = Router();
 
-// Create a new user
+// 🟢 Create a new user
 userrouter.post("/create-user", upload.single("file"), async (req, res) => {
   const { name, email, password } = req.body;
   const userEmail = await userModel.findOne({ email });
@@ -29,7 +32,7 @@ userrouter.post("/create-user", upload.single("file"), async (req, res) => {
   });
 });
 
-// Login user
+// 🟢 Login user
 userrouter.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const check = await userModel.findOne({ email });
@@ -55,7 +58,7 @@ userrouter.post("/login", async (req, res) => {
   });
 });
 
-// Fetch user profile
+// 🟢 Fetch user profile
 userrouter.get("/profile", async (req, res) => {
   const { email } = req.query;
   try {
@@ -69,7 +72,7 @@ userrouter.get("/profile", async (req, res) => {
   }
 });
 
-// Update user address
+// 🟢 Update user address
 userrouter.post("/update-address", async (req, res) => {
   const { email, address } = req.body;
   try {
@@ -87,7 +90,7 @@ userrouter.post("/update-address", async (req, res) => {
   }
 });
 
-// Get user addresses
+// 🟢 Get user addresses
 userrouter.get("/get-addresses", async (req, res) => {
   const { email } = req.query;
   try {
@@ -101,7 +104,7 @@ userrouter.get("/get-addresses", async (req, res) => {
   }
 });
 
-// Place Order
+// 🟢 Place Order
 userrouter.post("/place-order", async (req, res) => {
   const { email, products, address } = req.body;
   try {
@@ -117,15 +120,16 @@ userrouter.post("/place-order", async (req, res) => {
         return res.status(400).json({ message: `Product with ID ${product.productId} not found` });
       }
 
-      const order = {
+      const order = new orderModel({
         userId: user._id,
         productId: product.productId,
         quantity: product.quantity,
         address: address,
         status: "Pending",
+        paypalOrderId: "", // Store PayPal order ID later
         createdAt: new Date(),
-      };
-      orders.push(order);
+      });
+      
     }
 
     await orderModel.insertMany(orders);
@@ -136,7 +140,39 @@ userrouter.post("/place-order", async (req, res) => {
   }
 });
 
-// Get all orders for a user
+// 🟢 PayPal Payment Verification
+userrouter.post("/verify-paypal-payment", async (req, res) => {
+  const { orderId } = req.body;
+
+  try {
+    const auth = Buffer.from(`${PAYPAL_CLIENT_ID}:${PAYPAL_SECRET}`).toString("base64");
+    const response = await axios.post(
+      `https://api-m.sandbox.paypal.com/v2/checkout/orders/${orderId}/capture`,
+      {},
+      {
+        headers: {
+          Authorization: `Basic ${auth}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.data.status === "COMPLETED") {
+      const order = await orderModel.findByIdAndUpdate(orderId, { status: "Paid" }, { new: true });
+      if (!order) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+      return res.status(200).json({ message: "Payment successful", order });
+    } else {
+      return res.status(400).json({ message: "Payment not completed" });
+    }
+  } catch (error) {
+    console.error("PayPal Payment Verification Error:", error);
+    return res.status(500).json({ message: "Error verifying payment" });
+  }
+});
+
+// 🟢 Get all orders for a user
 userrouter.get("/your-orders", async (req, res) => {
   const { email } = req.query;
 
@@ -160,7 +196,7 @@ userrouter.get("/your-orders", async (req, res) => {
   }
 });
 
-// **New Route: Cancel Order**
+// 🟢 Cancel Order
 userrouter.post("/cancel-order", async (req, res) => {
   const { orderId } = req.body;
 
@@ -171,7 +207,6 @@ userrouter.post("/cancel-order", async (req, res) => {
       return res.status(404).json({ message: "Order not found" });
     }
     
-    // Prevent canceling already canceled orders
     if (order.status === "Canceled") {
       return res.status(400).json({ message: "Order is already canceled" });
     }
