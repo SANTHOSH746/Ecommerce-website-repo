@@ -1,6 +1,19 @@
 import './login.css';
+import { useDispatch } from 'react-redux';
+import { setEmail } from '../store/userActions';  // Import Redux action
+import { useState } from 'react';
 
 export default function Example() {
+  const dispatch = useDispatch();
+  const [email, setEmailState] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(setEmail(email));  // Store email in Redux
+    console.log("Email stored in Redux:", email);
+  };
+
   return (
     <>
       <div className="container">
@@ -14,7 +27,7 @@ export default function Example() {
         </div>
 
         <div className="form-section">
-          <form action="#" method="POST" className="form">
+          <form className="form" onSubmit={handleLogin}>
             <div>
               <label htmlFor="email" className="label">
                 Email address
@@ -28,6 +41,8 @@ export default function Example() {
                   autoComplete="email"
                   className="input"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmailState(e.target.value)}
                 />
               </div>
             </div>
@@ -37,11 +52,6 @@ export default function Example() {
                 <label htmlFor="password" className="label">
                   Password
                 </label>
-                <div className="forgot-password">
-                  <a href="#" className="link">
-                    Forgot password?
-                  </a>
-                </div>
               </div>
               <div className="input-container">
                 <input
@@ -52,6 +62,8 @@ export default function Example() {
                   autoComplete="current-password"
                   className="input"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -60,15 +72,8 @@ export default function Example() {
               <button type="submit" className="submit-button">
                 Sign in
               </button>
-              <button type="submit" className="submit-button">
-                Sign up
-              </button>
             </div>
           </form>
-
-          <p className="footer-text">
-            <a href="#">Need help?</a>
-          </p>
         </div>
       </div>
     </>
