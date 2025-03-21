@@ -965,3 +965,65 @@ By the end of this milestone, you will:
 - If **PayPal** is selected, the **PayPal payment buttons** should appear.  
 
 🚀 **Get ready for the next step: Implementing PayPal payments!**  
+
+
+
+
+
+
+
+
+
+# Milestone-30
+
+# 🛒 E-Commerce Application with PayPal Integration
+
+This project is a full-stack e-commerce application that allows users to register, log in, manage addresses, place orders, and make online payments using PayPal. The backend is built using **Node.js, Express, MongoDB**, and authentication is handled with **JWT & bcrypt**.
+
+---
+
+## 🚀 Features
+
+### **User Authentication**
+✅ Register new users with hashed passwords  
+✅ Secure login using JWT authentication  
+
+### **User Profile & Address Management**
+✅ Fetch user profile  
+✅ Add multiple addresses  
+
+### **Order Management**
+✅ Place orders for multiple products  
+✅ Fetch all orders of a user  
+✅ Cancel an order  
+
+### **Payment Integration (PayPal)**
+✅ Secure online payments using **PayPal API**  
+✅ Verify PayPal payment status and update order status  
+
+---
+
+## 📌 **Tech Stack**
+
+- **Frontend**: React.js, Tailwind CSS  
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose  
+- **Authentication**: JWT, bcrypt  
+- **Payments**: PayPal API  
+- **File Uploads**: Multer  
+
+---
+
+## 📚 **Learning Goals 🎯**
+By the end of this milestone, you will:
+
+✅ Learn how to use PayPal API  
+✅ Learn how to integrate online payments  
+
+---
+
+## 🛠️ **Project Setup**
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/your-repo-name.git
+cd your-repo-name
+
