@@ -974,6 +974,7 @@ By the end of this milestone, you will:
 
 
 
+
 # Milestone-30
 
 # 🛒 E-Commerce Application with PayPal Integration
@@ -1026,4 +1027,32 @@ By the end of this milestone, you will:
 ```sh
 git clone https://github.com/your-repo-name.git
 cd your-repo-name
+
+
+
+
+
+
+
+
+
+# Milestone 31 - Implementing Redux for Global State Management  
+
+## 🚀 Learning Goals 🎯  
+By the end of this milestone, you will:  
+
+- Understand how to use **Redux** for global state management  
+- Implement a **Redux store** to manage global states  
+- Learn how to store and retrieve the **user's email** globally using Redux  
+
+---
+
+## 📝 Steps for Milestone 31  
+
+### **1️⃣ Install Required Packages**  
+First, install the **react-redux** package by running:  
+
+```sh
+npm install react-redux @reduxjs/toolkit
+
 
