@@ -1036,7 +1036,7 @@ cd your-repo-name
 
 
 
-# Milestone 31 - Implementing Redux for Global State Management  
+# Milestone 31 & 32 - Implementing Redux for Global State Management  
 
 ## 🚀 Learning Goals 🎯  
 By the end of this milestone, you will:  
@@ -1054,5 +1054,31 @@ First, install the **react-redux** package by running:
 
 ```sh
 npm install react-redux @reduxjs/toolkit
+
+
+
+
+
+
+
+
+# **Milestone 33 - Implementing JWT Authentication with Cookies**
+
+## **Learning Goals 🎯**
+By the end of this milestone, you will:
+
+✅ Learn how to create a JWT token.  
+✅ Understand how to store tokens inside cookies.  
+✅ Implement secure authentication using JWT and cookies.  
+
+---
+
+## **Steps for Milestone 33 📝**
+
+### **1️⃣ Install the `jsonwebtoken` package**
+To work with JWT, install the `jsonwebtoken` package using npm:
+
+```bash
+npm install jsonwebtoken
 
 
