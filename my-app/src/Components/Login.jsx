@@ -1,6 +1,33 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import './login.css';
 
-export default function Example() {
+export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/login",
+        { email, password },
+        { withCredentials: true } 
+      );
+
+      if (response.status === 200) {
+        alert("Login successful!");
+        navigate("/dashboard"); 
+      }
+    } catch (error) {
+      alert("Invalid credentials!");
+      console.error("Login error:", error);
+    }
+  };
+
   return (
     <>
       <div className="container">
@@ -14,7 +41,7 @@ export default function Example() {
         </div>
 
         <div className="form-section">
-          <form action="#" method="POST" className="form">
+          <form onSubmit={handleLogin} className="form">
             <div>
               <label htmlFor="email" className="label">
                 Email address
@@ -28,6 +55,8 @@ export default function Example() {
                   autoComplete="email"
                   className="input"
                   placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -52,6 +81,8 @@ export default function Example() {
                   autoComplete="current-password"
                   className="input"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
@@ -60,7 +91,7 @@ export default function Example() {
               <button type="submit" className="submit-button">
                 Sign in
               </button>
-              <button type="submit" className="submit-button">
+              <button type="button" className="submit-button" onClick={() => navigate("/signup")}>
                 Sign up
               </button>
             </div>

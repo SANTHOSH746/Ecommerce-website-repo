@@ -1082,3 +1082,26 @@ To work with JWT, install the `jsonwebtoken` package using npm:
 npm install jsonwebtoken
 
 
+
+
+
+
+# Milestone 34: Authentication Using Cookies 🍪
+
+## Learning Goals 🎯
+By the end of this milestone, you will:
+- Learn how to extract the JWT token from the cookie and send it to the server.
+- Understand how to validate the JWT token received from the client.
+- Ensure that users cannot access protected pages without authentication.
+
+---
+
+## Steps for Milestone 34 📝
+
+### **1. Get the Token from the Browser Cookie and Send It to the Server**
+- Install `js-cookie` to manage cookies in the frontend:
+  ```sh
+  npm install js-cookie
+
+
+

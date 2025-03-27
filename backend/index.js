@@ -11,6 +11,8 @@ app.use(express.json());
 require('dotenv').config({
     path:'./src/config/.env'
 });
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 
 const PORT=process.env.port || 5000;
 const url=process.env.db_url;

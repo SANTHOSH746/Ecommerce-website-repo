@@ -17,22 +17,34 @@ const userrouter = Router();
 userrouter.use(cookieParser()); // Use cookie parser middleware
 
 // 🟢 Create a new user
-userrouter.post("/create-user", upload.single("file"), async (req, res) => {
+router.post("/create-user", async (req, res) => {
   const { name, email, password } = req.body;
-  const userEmail = await userModel.findOne({ email });
 
-  if (userEmail) {
-    return res.status(400).json({ message: "User already exists" });
-  }
+  try {
+    // Check if user already exists
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(400).json({ message: "User already exists" });
+    }
 
-  bcrypt.hash(password, 10, async function (err, hash) {
-    await userModel.create({
-      name,
-      email,
-      password: hash,
+    // Create new user
+    user = new User({ name, email, password });
+    await user.save();
+
+    // Generate JWT token
+    const token = jwt.sign({ userId: user._id }, "your_secret_key", { expiresIn: "1h" });
+
+    // Send token as HTTP-only cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true, // Use true in production (HTTPS)
+      sameSite: "strict",
     });
-    res.status(201).json({ message: "User created successfully" });
-  });
+
+    res.json({ message: "Signup successful", user });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
 });
 
 // 🟢 Login user (with JWT stored in HTTP-only cookie)
