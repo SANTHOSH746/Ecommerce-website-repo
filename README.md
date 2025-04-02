@@ -742,7 +742,6 @@ export default OrderConfirmation;
 
 
 
-
 # Milestone 25 - Place an Order
 
 ## 📌 Overview
@@ -782,6 +781,327 @@ The order consists of **products, quantity, and a shipping address** associated 
 
 
 
+
+
+# Milestone 26 - Retrieve User Orders
+
+## 📌 Overview
+This milestone focuses on creating a backend endpoint that allows users to **view all their past orders**.  
+Using the user's **email**, the system retrieves their **_id** and fetches all orders associated with them.
+
+## 🏗️ Technologies Used
+- Node.js
+- Express.js
+- MongoDB (Mongoose ODM)
+- bcrypt.js (for password hashing)
+- dotenv (for environment variables)
+- JWT (for authentication)
+
+---
+
+## 🚀 API Endpoint: Retrieve Orders
+### **📌 Endpoint: `/your-orders`**
+**Method:** `GET`  
+**URL:** `/auth/your-orders?email=user@example.com`  
+
+### **📌 Response**
+✅ **Success (200)**
+```json
+{
+  "orders": [
+    {
+      "_id": "65f3c89a0d12ab34567c8901",
+      "userId": "65f0b91c123abc123abc1234",
+      "productId": {
+        "_id": "65f1a98b7f1c3e5d1a123456",
+        "name": "Laptop",
+        "price": 999
+      },
+      "quantity": 2,
+      "address": "123, Main Street, City",
+      "status": "Pending",
+      "createdAt": "2025-03-11T12:34:56.789Z"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+# 📌 Milestone 27 - My Orders Page
+
+## 📝 Overview  
+In this milestone, we will create a **"My Orders"** page to display all the orders placed by a user. The orders will be fetched from the backend using the `/your-orders` endpoint.
+
+---
+
+## 🎯 Learning Goals  
+By completing this milestone, you will:  
+- ✅ Create a **frontend page** (`MyOrders.jsx`) to display user orders.  
+- ✅ Make a **GET request** to the `/your-orders` API endpoint.  
+- ✅ Send the **user's email** as a query parameter to fetch their orders.  
+- ✅ Display the **list of orders**, including product details.  
+- ✅ Add the **"My Orders" page to the Navbar** for easy access.  
+
+---
+
+## 📂 Steps to Complete This Milestone  
+
+### 1️⃣ Modify `App.jsx`  
+- Import the `MyOrders` component.  
+- Add a route for `/my-orders`.  
+- Ensure it correctly renders the `MyOrders` page.  
+
+### 2️⃣ Create `MyOrders.jsx` Component  
+- Fetch **orders** from the backend using `/your-orders`.  
+- Display order details such as:  
+  - **Product Name**  
+  - **Quantity**  
+  - **Order Status** (Pending, Shipped, Delivered, Cancelled)  
+  - **Order Date**  
+- Use **Tailwind CSS** for styling.  
+
+### 3️⃣ Modify the Navbar  
+- Add a **"My Orders"** link in the Navbar.  
+- Ensure it redirects to `/my-orders`.  
+
+---
+
+## 🛠️ API Endpoint - `/your-orders`  
+- **Method:** `GET`  
+- **URL:** `/your-orders?email=<user_email>`  
+- **Response Example:**  
+```json
+{
+  "orders": [
+    {
+      "_id": "65abc123def456",
+      "productId": {
+        "_id": "789xyz456",
+        "name": "Smartphone X",
+        "price": 699
+      },
+      "quantity": 2,
+      "status": "Shipped",
+      "address": "123 Street, City",
+      "createdAt": "2025-03-11T12:00:00.000Z"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Milestone 28 - Cancel Order Feature & Fixes
+
+## **Overview**
+Milestone 28 introduces a **Cancel Order** feature in the backend, along with bug fixes and improvements in the `user.js` file. Users can now cancel their orders, and deleted products will no longer cause issues in the order list.
+
+---
+
+## **Features Implemented**
+### ✅ **Cancel Order API**
+- **Endpoint:** `POST /cancel-order`
+- **Description:** Allows users to cancel an order by providing the `orderId`.
+- **Request Body:**
+  ```json
+  {
+    "orderId": "ORDER_ID_HERE"
+  }
+
+
+
+
+
+
+
+# 🛒 Milestone 29 - Integrating PayPal Payment  
+
+## 🎯 Learning Goals  
+By the end of this milestone, you will:  
+- Learn how to use the **PayPal API**.  
+- Learn how to integrate **online payments** into your project.  
+
+## 📝 Steps for Milestone 29  
+
+### 1️⃣ Create a PayPal Developer Account  
+- Go to the [PayPal Developer Dashboard](https://developer.paypal.com/).  
+- Sign up or log in.  
+
+### 2️⃣ Set Up Sandbox Accounts  
+- Navigate to **Sandbox > Accounts** in the dashboard.  
+- Copy the **UserID** of the sandbox account and save it.  
+- In the **Sandbox Accounts** section, find your **Client ID** and save it.  
+
+### 3️⃣ Modify the Order Confirmation Page  
+- In your **order confirmation** page, add **two payment options**:  
+  - **Cash on Delivery (COD)**  
+  - **Online Payment (PayPal)**  
+- Use **radio buttons** to let users select between COD and PayPal.  
+- When a user selects **Online Payment**, the **PayPal buttons** should be displayed.  
+
+### 4️⃣ Prepare for the Next Milestone  
+- In the next milestone, we will write the actual code to handle **PayPal transactions**.  
+
+## ✅ Expected Outcome  
+- Users should be able to select **COD** or **PayPal** on the order confirmation page.  
+- If **PayPal** is selected, the **PayPal payment buttons** should appear.  
+
+🚀 **Get ready for the next step: Implementing PayPal payments!**  
+
+
+
+
+
+
+
+
+
+
+# Milestone-30
+
+# 🛒 E-Commerce Application with PayPal Integration
+
+This project is a full-stack e-commerce application that allows users to register, log in, manage addresses, place orders, and make online payments using PayPal. The backend is built using **Node.js, Express, MongoDB**, and authentication is handled with **JWT & bcrypt**.
+
+---
+
+## 🚀 Features
+
+### **User Authentication**
+✅ Register new users with hashed passwords  
+✅ Secure login using JWT authentication  
+
+### **User Profile & Address Management**
+✅ Fetch user profile  
+✅ Add multiple addresses  
+
+### **Order Management**
+✅ Place orders for multiple products  
+✅ Fetch all orders of a user  
+✅ Cancel an order  
+
+### **Payment Integration (PayPal)**
+✅ Secure online payments using **PayPal API**  
+✅ Verify PayPal payment status and update order status  
+
+---
+
+## 📌 **Tech Stack**
+
+- **Frontend**: React.js, Tailwind CSS  
+- **Backend**: Node.js, Express.js, MongoDB, Mongoose  
+- **Authentication**: JWT, bcrypt  
+- **Payments**: PayPal API  
+- **File Uploads**: Multer  
+
+---
+
+## 📚 **Learning Goals 🎯**
+By the end of this milestone, you will:
+
+✅ Learn how to use PayPal API  
+✅ Learn how to integrate online payments  
+
+---
+
+## 🛠️ **Project Setup**
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/your-repo-name.git
+cd your-repo-name
+
+
+
+
+
+
+
+
+
+# Milestone 31 & 32 - Implementing Redux for Global State Management  
+
+## 🚀 Learning Goals 🎯  
+By the end of this milestone, you will:  
+
+- Understand how to use **Redux** for global state management  
+- Implement a **Redux store** to manage global states  
+- Learn how to store and retrieve the **user's email** globally using Redux  
+
+---
+
+## 📝 Steps for Milestone 31  
+
+### **1️⃣ Install Required Packages**  
+First, install the **react-redux** package by running:  
+
+```sh
+npm install react-redux @reduxjs/toolkit
+
+
+
+
+
+
+
+
+# **Milestone 33 - Implementing JWT Authentication with Cookies**
+
+## **Learning Goals 🎯**
+By the end of this milestone, you will:
+
+✅ Learn how to create a JWT token.  
+✅ Understand how to store tokens inside cookies.  
+✅ Implement secure authentication using JWT and cookies.  
+
+---
+
+## **Steps for Milestone 33 📝**
+
+### **1️⃣ Install the `jsonwebtoken` package**
+To work with JWT, install the `jsonwebtoken` package using npm:
+
+```bash
+npm install jsonwebtoken
+
+
+
+
+
+
+# Milestone 34: Authentication Using Cookies 🍪
+
+## Learning Goals 🎯
+By the end of this milestone, you will:
+- Learn how to extract the JWT token from the cookie and send it to the server.
+- Understand how to validate the JWT token received from the client.
+- Ensure that users cannot access protected pages without authentication.
+
+---
+
+## Steps for Milestone 34 📝
+
+### **1. Get the Token from the Browser Cookie and Send It to the Server**
+- Install `js-cookie` to manage cookies in the frontend:
+  ```sh
+  npm install js-cookie
 
 
 
